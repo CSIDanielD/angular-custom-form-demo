@@ -1,5 +1,11 @@
-<form [formGroup]="formGroup">
-  <app-custom-form-input label="Name" formControlName="testName"></app-custom-form-input>
+<div>
+  <form [formGroup]="formGroup">
+  <app-custom-form-input label="Name" formControlName="fullname"></app-custom-form-input>
+  <app-custom-form-input label="Name" type="email" formControlName="email"></app-custom-form-input>
 </form>
+</div>
+<form [formGroup]="formGroup">
+  <app-custom-form-input label="Name" formControlName="fullname"></app-custom-form-input>
+  <app-custom-form-input label="Name" type="email" formControlName="email"></app-custom-form-input>
 
 <pre>{{formGroup.value | json}}</pre>
