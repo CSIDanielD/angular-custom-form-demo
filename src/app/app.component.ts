@@ -11,8 +11,18 @@ export class AppComponent {
 
   constructor(private fb: FormBuilder) {
     this.formGroup = this.fb.group({
-      fullname: ["", [Validators.required]],
-      email: ["", [Validators.required, Validators.email]]
+      userId: [{ value: "25", disabled: true }],
+      fullname: ["Test Guy", [Validators.required]],
+      email: ["", [Validators.required, Validators.email]],
+      phone: [
+        "",
+        [
+          // RegEx pattern for phone number I looked up
+          Validators.pattern(
+            new RegExp("^[+]?[(]?[0-9]{3}[)]?[-s.]?[0-9]{3}[-s.]?[0-9]{4}$")
+          )
+        ]
+      ]
     });
   }
 }

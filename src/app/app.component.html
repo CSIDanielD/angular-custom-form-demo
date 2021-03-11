@@ -1,11 +1,16 @@
-<div>
+<div class="container">
   <form [formGroup]="formGroup">
-  <app-custom-form-input label="Name" formControlName="fullname"></app-custom-form-input>
-  <app-custom-form-input label="Name" type="email" formControlName="email"></app-custom-form-input>
-</form>
-</div>
-<form [formGroup]="formGroup">
-  <app-custom-form-input label="Name" formControlName="fullname"></app-custom-form-input>
-  <app-custom-form-input label="Name" type="email" formControlName="email"></app-custom-form-input>
+    <div class="form-group">
+      <app-custom-form-input label="Email address" placeholder="example@mail.com" type="email" formControlName="email">
+      </app-custom-form-input>
+      <app-custom-form-input label="Full name" placeholder="John Doe" formControlName="fullname">
+      </app-custom-form-input>
+      <app-custom-form-input label="Phone number" placeholder="123-456-7891" formControlName="phone">
+      </app-custom-form-input>
+    </div>
+  </form>
 
-<pre>{{formGroup.value | json}}</pre>
+  <div>
+    <code>{{formGroup.value | json}}</code>
+  </div>
+</div>
