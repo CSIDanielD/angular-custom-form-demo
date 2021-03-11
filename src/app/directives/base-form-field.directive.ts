@@ -1,10 +1,17 @@
 import { Directive, Input, Optional, Self } from "@angular/core";
 import { ControlValueAccessor, NgControl } from "@angular/forms";
 
-/// This directive is based on this: https://ritchiejacobs.be/angular-custom-form-component
-@Directive({
-  selector: "[appBaseFormField]"
-})
+/**
+ * Serves as the base class for all our custom form field components.
+ * Helps connect a field's DOM element(s) to its Reactive Form control.
+ * Abstracts away the ControlValueAccessor implementation since it won't need
+ * to change for most derived classes.
+ *
+ * @important Child classes will need to provide an NG_VALUE_ACCESSOR through the DI
+ * system. Use provideValueAccessor in the component's providers array to easily accomplish this.
+ * @see Based on: https://ritchiejacobs.be/angular-custom-form-component
+ */
+@Directive({ selector: "[appBaseFormField]" })
 export class BaseFormFieldDirective implements ControlValueAccessor {
   @Input() public disabled: boolean = false;
   public value: any = "";
