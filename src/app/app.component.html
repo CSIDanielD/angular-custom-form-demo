@@ -1,1 +1,5 @@
-Hello.
+<form [formGroup]="formGroup">
+  <app-custom-form-input label="Name" formControlName="testName"></app-custom-form-input>
+</form>
+
+<pre>{{formGroup.value | json}}</pre>
