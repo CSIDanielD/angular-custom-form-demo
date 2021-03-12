@@ -20,8 +20,9 @@
       </div>
 
       <div class="row float-right">
+        <button type="button" (click)="randomFood()" class="btn btn-outline-secondary mr-2">Select Random Food</button>
         <button type="button" (click)="resetForm()" class="btn btn-danger mr-2">Reset</button>
-        <button type="submit" class="btn btn-primary">Save</button>
+        <button type="submit" class="btn btn-primary" [disabled]="formGroup.invalid">Save</button>
       </div>
     </form>
   </div>

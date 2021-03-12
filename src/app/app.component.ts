@@ -40,6 +40,15 @@ export class AppComponent {
     // In a real application, you can call a service here to send the data to the backend.
   }
 
+  randomFood() {
+    // Demonstrates updating the form model directly.
+    const randomId = Math.floor(Math.random() * 4);
+    const food = this.foodOptions[randomId];
+
+    // Use patchValue() to only update a single value by key
+    this.formGroup.patchValue({ food: food.id });
+  }
+
   constructor(private fb: FormBuilder) {
     this.formGroup = this.fb.group({
       userId: [this.defaultFormValues.userId],
