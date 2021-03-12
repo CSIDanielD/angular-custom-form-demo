@@ -34,7 +34,7 @@ export class AppComponent {
   }
 
   saveForm() {
-    // Display a popup alert with our form 
+    // Display a popup alert with our form
     alert(JSON.stringify(this.formGroup.value));
 
     // In a real application, you can call a service here to send the data to the backend.

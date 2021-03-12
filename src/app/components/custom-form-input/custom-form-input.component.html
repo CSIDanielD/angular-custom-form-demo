@@ -6,8 +6,8 @@
           class="form-check-input"
           [ngClass]="{'is-invalid': !control.pristine && control.invalid}"
           [type]="inputType"
-          [value]="value"
-          [disabled]="disabled"
+          [checked]="control.value"
+          [disabled]="control.disabled"
           (input)="onChange(getHTMLCheckedValue($event))"
           (blur)="onTouched()"/>
     <label class="form-check-label" [for]="id">
@@ -25,8 +25,8 @@
         [ngClass]="{'is-invalid': !control.pristine && control.invalid}"
         [type]="inputType"
         [placeholder]="placeholder"
-        [value]="value"
-        [disabled]="disabled"
+        [value]="control.value"
+        [disabled]="control.disabled"
         (input)="onChange(getHTMLTextValue($event))"
         (blur)="onTouched()" />
 </ng-template>
