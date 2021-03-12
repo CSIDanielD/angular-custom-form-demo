@@ -3,7 +3,7 @@
     [id]="id"
     class = "form-control"
     [ngClass]="{'is-invalid': !control.pristine && control.invalid}"
-    [value]="value"
+    [value]="control.value"
     [disabled]="disabled"
     (input)="onChange(getHTMLSelectValue($event))"
     >
