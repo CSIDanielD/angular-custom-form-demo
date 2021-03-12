@@ -1,5 +1,6 @@
-<label>{{label}}</label>
+<label [for]="id">{{label}}</label>
 <select
+    [id]="id"
     [ngClass]="{'form-control': true, 'is-invalid': !control.pristine && control.invalid}"
     [value]="value"
     [disabled]="disabled"

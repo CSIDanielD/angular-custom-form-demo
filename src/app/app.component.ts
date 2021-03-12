@@ -31,7 +31,8 @@ export class AppComponent {
           )
         ]
       ],
-      food: ["🍩", [Validators.pattern(new RegExp("🍎|🥑|🍕|🍣|🍩"))]]
+      food: ["🍩", [Validators.pattern(new RegExp("🍎|🥑|🍕|🍣|🍩"))]],
+      over21: ["false"]
     });
   }
 }

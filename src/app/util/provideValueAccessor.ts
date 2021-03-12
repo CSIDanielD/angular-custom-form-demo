@@ -2,7 +2,7 @@ import { forwardRef, ForwardRefFn } from "@angular/core";
 import { NG_VALUE_ACCESSOR } from "@angular/forms";
 
 /** Helper function to create a DI provider and forward reference for
- *  for the given type
+ *  for the given type. You'll only be using this if you don't want to inject the NgControl directly.
  * @param {ForwardRefFn} refFn A function returning the token to create a DI reference for.
  * Typically this will be the Component's type.
  *

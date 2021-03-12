@@ -2,19 +2,14 @@ import { Component, Input, Optional, Self } from "@angular/core";
 import { NgControl } from "@angular/forms";
 import { BaseFormFieldDirective } from "../../directives/base-form-field.directive";
 
-/**
- * A custom form input component.
- */
 @Component({
-  selector: "app-custom-form-input",
-  templateUrl: "./custom-form-input.component.html",
-  styleUrls: ["./custom-form-input.component.css"]
+  selector: "app-custom-form-option-group",
+  templateUrl: "./custom-form-option-group.component.html",
+  styleUrls: ["./custom-form-option-group.component.css"]
 })
-export class CustomFormInputComponent extends BaseFormFieldDirective {
+export class CustomFormOptionGroupComponent extends BaseFormFieldDirective {
   @Input() id: string | number = "";
-  @Input() label: string = "";
-  @Input() placeholder: string = "";
-  @Input() type: "text" | "email" | "password" | "checkbox" | "radio" = "text";
+  @Input() type: "checkbox" | "radio" = "checkbox";
 
   constructor(
     // Retrieve the dependency only from the local injector,
@@ -26,10 +21,5 @@ export class CustomFormInputComponent extends BaseFormFieldDirective {
     ngControl: NgControl
   ) {
     super(ngControl);
-  }
-
-  /** Gets an HTML input element's value from the given event. */
-  getHTMLEventValue(ev: Event) {
-    return (ev.target as HTMLInputElement).value;
   }
 }

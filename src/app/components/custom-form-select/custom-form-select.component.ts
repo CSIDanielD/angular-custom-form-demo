@@ -10,6 +10,7 @@ import { BaseFormFieldDirective } from "../../directives/base-form-field.directi
 export class CustomFormSelectComponent extends BaseFormFieldDirective {
   @Input() label: string = "";
   @Input() options: Array<{ id: string; name: string }> = [];
+  @Input() id: string | number = "";
 
   constructor(
     // Retrieve the dependency only from the local injector,

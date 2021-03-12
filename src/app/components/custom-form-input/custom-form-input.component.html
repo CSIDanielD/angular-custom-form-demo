@@ -1,12 +1,34 @@
-<label>{{ label }}</label>
-<input
-    [ngClass]="{'form-control': true, 'is-invalid': !control.pristine && control.invalid}"
-    [type]="type"
-    [placeholder]="placeholder"
-    [value]="value"
-    [disabled]="disabled"
-    (input)="onChange(getHTMLEventValue($event))"
-    (blur)="onTouched()" />
+<ng-template [ngSwitch]="type" #inputTemplate>
+
+  <!-- Option input template -->
+  <ng-container *ngSwitchCase="type === 'checkbox' || type === 'radio'">
+    <label [for]="id">{{ label }}</label>
+    <input
+      [id]="id"
+      [type]="type"
+      [value]="value"
+      [disabled]="disabled"
+      (input)="onChange(getHTMLEventValue($event))"
+      (blur)="onTouched()" />
+  </ng-container>
+
+  <!-- Text input template -->
+  <ng-container *ngSwitchDefault>
+    <label [for]="id">{{ label }}</label>
+    <input
+      [id]="id"
+      [ngClass]="{'form-control': true, 'is-invalid': !control.pristine && control.invalid}"
+      [type]="type"
+      [placeholder]="placeholder"
+      [value]="value"
+      [disabled]="disabled"
+      (input)="onChange(getHTMLEventValue($event))"
+      (blur)="onTouched()" />
+  </ng-container>
+</ng-template>
+
+<ng-container [ngTemplateOutlet]="inputTemplate"></ng-container>
+
 <div *ngIf="!control.pristine && control.invalid">
   <small>
     {{
