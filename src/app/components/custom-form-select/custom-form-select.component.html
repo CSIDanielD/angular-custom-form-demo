@@ -1,7 +1,8 @@
 <label [for]="id">{{label}}</label>
 <select
     [id]="id"
-    [ngClass]="{'form-control': true, 'is-invalid': !control.pristine && control.invalid}"
+    class = "form-control"
+    [ngClass]="{'is-invalid': !control.pristine && control.invalid}"
     [value]="value"
     [disabled]="disabled"
     (input)="onChange(getHTMLSelectValue($event))"
@@ -10,6 +11,7 @@
     {{opt.name}}
   </option>
 </select>
+
 <div *ngIf="!control.pristine && control.invalid">
   <small>
     {{

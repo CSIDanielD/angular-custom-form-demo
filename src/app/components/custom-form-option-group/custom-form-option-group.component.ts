@@ -9,7 +9,8 @@ import { BaseFormFieldDirective } from "../../directives/base-form-field.directi
 })
 export class CustomFormOptionGroupComponent extends BaseFormFieldDirective {
   @Input() id: string | number = "";
-  @Input() type: "checkbox" | "radio" = "checkbox";
+  @Input() inputType: "checkbox" | "radio" = "checkbox";
+  @Input() options: Array<{}> = [];
 
   constructor(
     // Retrieve the dependency only from the local injector,

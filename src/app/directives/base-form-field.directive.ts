@@ -1,5 +1,6 @@
 import { Directive, Input } from "@angular/core";
 import { ControlValueAccessor, FormControl, NgControl } from "@angular/forms";
+import { BehaviorSubject } from "rxjs";
 
 /**
  * Serves as the base class for all our custom form field components.
@@ -12,8 +13,8 @@ import { ControlValueAccessor, FormControl, NgControl } from "@angular/forms";
   selector: "[appBaseFormField]"
 })
 export class BaseFormFieldDirective implements ControlValueAccessor {
-  @Input() public disabled: boolean = false;
-  public value: any = "";
+  @Input() disabled: boolean = false;
+  value: any = "";
 
   public onChange(value: any) {}
   public onTouched() {}
