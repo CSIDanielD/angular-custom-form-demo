@@ -32,7 +32,7 @@ export class AppComponent {
         ]
       ],
       food: ["🍩", [Validators.pattern(new RegExp("🍎|🥑|🍕|🍣|🍩"))]],
-      over21: ["false"]
+      over21: [fal]
     });
   }
 }

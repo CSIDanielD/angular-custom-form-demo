@@ -14,7 +14,8 @@ export class CustomFormInputComponent extends BaseFormFieldDirective {
   @Input() id: string | number = "";
   @Input() label: string = "";
   @Input() placeholder: string = "";
-  @Input() type: "text" | "email" | "password" | "checkbox" | "radio" = "text";
+  @Input() inputType: "text" | "email" | "password" | "checkbox" | "radio" =
+    "text";
 
   constructor(
     // Retrieve the dependency only from the local injector,
@@ -30,6 +31,6 @@ export class CustomFormInputComponent extends BaseFormFieldDirective {
 
   /** Gets an HTML input element's value from the given event. */
   getHTMLEventValue(ev: Event) {
-    return (ev.target as HTMLInputElement).value;
+    return (ev.target as HTMLInputElement).checked;
   }
 }

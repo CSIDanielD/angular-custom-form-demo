@@ -3,7 +3,7 @@
     <div class="form-group">
       <app-custom-form-input id="userId" label="User ID" placeholder="0" formControlName="userId">
       </app-custom-form-input>
-      <app-custom-form-input id="email" label="Email address" placeholder="example@mail.com" type="email"
+      <app-custom-form-input id="email" label="Email address" placeholder="example@mail.com" inputType="email"
         formControlName="email">
       </app-custom-form-input>
       <app-custom-form-input id="fullName" label="Full name" placeholder="John Doe" formControlName="fullname">
@@ -12,7 +12,7 @@
       </app-custom-form-input>
       <app-custom-form-select id="food" label="Food" [options]="foodOptions" formControlName="food">
       </app-custom-form-select>
-      <app-custom-form-input id="check" label="Over 21" type="checkbox" formControlName="over21">
+      <app-custom-form-input id="check" label="Over 21" inputType="checkbox" formControlName="over21">
       </app-custom-form-input>
     </div>
   </form>
