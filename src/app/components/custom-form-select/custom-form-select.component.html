@@ -9,3 +9,11 @@
     {{opt.name}}
   </option>
 </select>
+<div *ngIf="!control.pristine && control.invalid">
+  <small>
+    {{
+    control?.hasError("required") ? 
+      "Required" : "Invalid"
+    }}
+  </small>
+</div>
