@@ -1,0 +1,11 @@
+<label>{{label}}</label>
+<select
+    [ngClass]="{'form-control': true, 'is-invalid': !control.pristine && control.invalid}"
+    [value]="value"
+    [disabled]="disabled"
+    (input)="onChange(getHTMLSelectValue($event))"
+    >
+  <option *ngFor="let opt of options" [value]="opt.id">
+    {{opt.name}}
+  </option>
+</select>

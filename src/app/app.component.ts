@@ -9,6 +9,13 @@ import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 export class AppComponent {
   formGroup = new FormGroup({});
 
+  foodOptions = [
+    { id: "🍎", name: "🍎" },
+    { id: "🥑", name: "🥑" },
+    { id: "🍕", name: "🍕" },
+    { id: "🍣", name: "🍣" }
+  ];
+
   constructor(private fb: FormBuilder) {
     this.formGroup = this.fb.group({
       userId: [{ value: "25", disabled: true }],
@@ -22,7 +29,8 @@ export class AppComponent {
             new RegExp("^[+]?[(]?[0-9]{3}[)]?[-s.]?[0-9]{3}[-s.]?[0-9]{4}$")
           )
         ]
-      ]
+      ],
+      food: [""]
     });
   }
 }
