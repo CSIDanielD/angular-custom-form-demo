@@ -29,8 +29,13 @@ export class CustomFormInputComponent extends BaseFormFieldDirective {
     super(ngControl);
   }
 
-  /** Gets an HTML input element's value from the given event. */
-  getHTMLEventValue(ev: Event) {
+  /** Gets a option input element's value from the given event. */
+  getOptionEventValue(ev: Event) {
     return (ev.target as HTMLInputElement).checked;
+  }
+
+  /** Gets a text-based input element's value from the given event. */
+  getTextEventValue(ev: Event) {
+    return (ev.target as HTMLInputElement).value;
   }
 }

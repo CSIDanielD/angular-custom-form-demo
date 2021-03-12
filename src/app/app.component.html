@@ -12,12 +12,18 @@
       </app-custom-form-input>
       <app-custom-form-select id="food" label="Food" [options]="foodOptions" formControlName="food">
       </app-custom-form-select>
-      <app-custom-form-input id="check" label="Over 21" inputType="checkbox" formControlName="over21">
+      <div class="form-group">
+
+      </div>
+      <app-custom-form-input id="check" label="Over 21?" inputType="checkbox" formControlName="over21">
       </app-custom-form-input>
     </div>
   </form>
 
   <div>
     <code>{{formGroup.value | json}}</code>
+  </div>
+  <div>
+    <code>{{formGroup.status | json}}</code>
   </div>
 </div>
