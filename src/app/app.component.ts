@@ -13,7 +13,8 @@ export class AppComponent {
     { id: "🍎", name: "🍎" },
     { id: "🥑", name: "🥑" },
     { id: "🍕", name: "🍕" },
-    { id: "🍣", name: "🍣" }
+    { id: "🍣", name: "🍣" },
+    { id: "🍩", name: "🍩" }
   ];
 
   constructor(private fb: FormBuilder) {
@@ -30,7 +31,7 @@ export class AppComponent {
           )
         ]
       ],
-      food: [""]
+      food: ["🍩", [Validators.pattern(new RegExp("🍎|🥑|🍕|🍣|🍩"))]]
     });
   }
 }
