@@ -1,6 +1,8 @@
 <div class="container">
   <form [formGroup]="formGroup">
     <div class="form-group">
+      <app-custom-form-input label="User ID" placeholder="0" formControlName="userId">
+      </app-custom-form-input>
       <app-custom-form-input label="Email address" placeholder="example@mail.com" type="email" formControlName="email">
       </app-custom-form-input>
       <app-custom-form-input label="Full name" placeholder="John Doe" formControlName="fullname">
