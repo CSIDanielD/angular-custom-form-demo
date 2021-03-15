@@ -1,4 +1,4 @@
-import { Directive, Input } from "@angular/core";
+import { Directive } from "@angular/core";
 import { ControlValueAccessor, FormControl, NgControl } from "@angular/forms";
 
 /**

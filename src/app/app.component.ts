@@ -42,7 +42,7 @@ export class AppComponent {
 
   randomFood() {
     // Demonstrates updating the form model directly.
-    const randomId = Math.floor(Math.random() * 4);
+    const randomId = Math.floor(Math.random() * 5);
     const food = this.foodOptions[randomId];
 
     // Use patchValue() to only update a single value by key
