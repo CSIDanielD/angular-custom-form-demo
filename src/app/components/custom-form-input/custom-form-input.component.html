@@ -29,7 +29,6 @@
         [disabled]="control.disabled"
         (input)="onChange(getHTMLTextValue($event))"
         (blur)="onTouched()" />
-  <div>{{control.errors | json}}</div>
 </ng-template>
 
 <div *ngIf="!control.pristine && control.invalid">
