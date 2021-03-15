@@ -1,0 +1,1 @@
+export default type ValidationMessagesConfig = {[validationKey: string]: string};

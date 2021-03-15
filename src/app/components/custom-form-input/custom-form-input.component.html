@@ -34,8 +34,15 @@
 <div *ngIf="!control.pristine && control.invalid">
   <small>
     {{
+      errorMessages && errorMessages.length > 0 ? 
+      errorMessages[0] : 
+      "Invalid"
+    }}
+  </small>
+  <!-- <small>
+    {{
     control?.hasError("required") ? "Required" : 
     "Invalid " + inputType
     }}
-  </small>
+  </small> -->
 </div>

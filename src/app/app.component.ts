@@ -27,6 +27,8 @@ export class AppComponent {
     over21: false
   };
 
+  validationMessages: { [validationKey: string]: string } = {};
+
   resetForm() {
     // Reset all the values to the saved defaults, and reset
     // the status of all fields to 'pristine'
