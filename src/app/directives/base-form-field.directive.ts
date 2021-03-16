@@ -1,6 +1,8 @@
 import { Directive, Input } from "@angular/core";
 import { ControlValueAccessor, FormControl, NgControl } from "@angular/forms";
+import FormControlAccessor from "../interfaces/FormControlAccessor";
 import ValidationMessagesConfig from "../types/ValidationMessagesConfig";
+import IFormControl
 
 /**
  * Serves as the base class for all our custom form field components.
@@ -12,7 +14,8 @@ import ValidationMessagesConfig from "../types/ValidationMessagesConfig";
 @Directive({
   selector: "[appBaseFormField]"
 })
-export class BaseFormFieldDirective implements ControlValueAccessor {
+export class BaseFormFieldDirective
+  implements ControlValueAccessor, FormControlAccessor {
   @Input() validationMessages: ValidationMessagesConfig = {};
   disabled: boolean = false;
   value: any = "";
@@ -46,9 +49,19 @@ export class BaseFormFieldDirective implements ControlValueAccessor {
 
     return Object.keys(this.ngControl.errors).reduce(
       (messages, currentErrorKey) => {
+        const error = this.ngControl[currentErrorKey];
+
         if (lowercaseKeys[currentErrorKey.toLocaleLowerCase()]) {
-          messages.push(this.validationMessages[currentErrorKey]);
+          // Get the actual error string by calling the provided function
+          const errorStr = lowercaseKeys[currentErrorKey.toLocaleLowerCase()](
+            error,
+            
+            this
+          );
+
+          messages.push(errorStr);
         }
+
         return messages;
       },
       [] as string[]

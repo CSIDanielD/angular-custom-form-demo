@@ -1,5 +1,6 @@
 import { Component } from "@angular/core";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
+import ValidationMessagesConfig from "./types/ValidationMessagesConfig";
 
 @Component({
   selector: "my-app",
@@ -27,7 +28,13 @@ export class AppComponent {
     over21: false
   };
 
-  validationMessages: { [validationKey: string]: string } = {};
+  validationMessages: ValidationMessagesConfig = {
+    required: () => "Required",
+    email: () => "Require a valid email address",
+    pattern: (error, control) => {
+      if (control.
+    }
+  };
 
   resetForm() {
     // Reset all the values to the saved defaults, and reset
