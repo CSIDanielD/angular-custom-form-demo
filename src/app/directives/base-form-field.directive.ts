@@ -1,7 +1,8 @@
-import { Directive, Input } from "@angular/core";
+import { Directive, Host, Input } from "@angular/core";
 import { ControlValueAccessor, FormControl, NgControl } from "@angular/forms";
 import FormControlAccessor from "../interfaces/FormControlAccessor";
 import ValidationMessagesConfig from "../types/ValidationMessagesConfig";
+import FormValidationContextDirective from "./form-validation-context.directive";
 
 /**
  * Serves as the base class for all our custom form field components.
@@ -14,14 +15,16 @@ import ValidationMessagesConfig from "../types/ValidationMessagesConfig";
   selector: "[appBaseFormField]"
 })
 export class BaseFormFieldDirective implements ControlValueAccessor {
-  @Input() validationMessages: ValidationMessagesConfig = {};
   disabled: boolean = false;
   value: any = "";
 
   public onChange(value: any) {}
   public onTouched() {}
 
-  constructor(private ngControl?: NgControl) {
+  constructor(
+    private ngControl?: NgControl,
+    private validationContext?: FormValidationContextDirective
+  ) {
     if (ngControl) {
       ngControl.valueAccessor = this;
     }
@@ -34,9 +37,13 @@ export class BaseFormFieldDirective implements ControlValueAccessor {
 
   /** The current validation error messages in array form. */
   get errorMessages() {
-    if (!this.ngControl || !this.ngControl.errors) return null;
+    if (!this.ngControl || !this.ngControl.errors || !this.validationContext)
+      return null;
 
-    const validationMessageKeys = Object.keys(this.validationMessages);
+    const validationMessageKeys = Object.keys(
+      this.validationContext.validationMessages
+    );
+
     if (!validationMessageKeys || validationMessageKeys.length === 0)
       return null; // Return early if no custom validation messages were given.
 
@@ -45,7 +52,9 @@ export class BaseFormFieldDirective implements ControlValueAccessor {
     // messages.
     const lowercaseKeys = validationMessageKeys.reduce(
       (keys, key) => {
-        keys[key.toLocaleLowerCase()] = this.validationMessages[key];
+        keys[
+          key.toLocaleLowerCase()
+        ] = this.validationContext.validationMessages[key];
         return keys;
       },
       {} as ValidationMessagesConfig
