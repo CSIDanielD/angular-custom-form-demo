@@ -1,7 +1,7 @@
 import { Component, Input, Optional, Self } from "@angular/core";
 import { NgControl } from "@angular/forms";
+import FormValidationContext from "../../classes/FormValidationContext";
 import { BaseFormFieldDirective } from "../../directives/base-form-field.directive";
-import FormValidationContextDirective from "../../directives/form-validation-context.directive";
 
 /**
  * A custom form input component.
@@ -26,7 +26,7 @@ export class CustomFormInputComponent extends BaseFormFieldDirective {
     // so we mark the dependency as optional.
     @Optional()
     ngControl: NgControl,
-    validationContext: FormValidationContextDirective
+    validationContext: FormValidationContext
   ) {
     super(ngControl, validationContext);
   }

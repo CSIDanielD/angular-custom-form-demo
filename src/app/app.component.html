@@ -1,11 +1,10 @@
 <div class="container">
   <div class="card mt-3">
     <form
-      appFormValidationContext
       class="card-body"
       [formGroup]="formGroup"
       (ngSubmit)="saveForm()"
-      [validationMessages]="validationMessages"
+      [validationContext]="validationContext"
     >
       <div class="form-group">
         <app-custom-form-input

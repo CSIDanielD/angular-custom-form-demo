@@ -1,7 +1,7 @@
 import { FormControl } from "@angular/forms";
 
 export interface FormControlAccessor {
-  control: () => FormControl;
+  control: FormControl;
 }
 
 export default FormControlAccessor;

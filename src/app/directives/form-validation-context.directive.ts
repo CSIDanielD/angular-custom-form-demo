@@ -1,18 +1,27 @@
 import { Directive, Input } from "@angular/core";
-import ValidationMessagesConfig from "../types/ValidationMessagesConfig";
+import FormValidationContext from "../classes/FormValidationContext";
+import FormValidationContextConfig from "../types/FormValidationContextConfig";
 
 @Directive({
-  selector: "[appFormValidationContext]",
-  providers: [
-    {
-      // Allow this context to be injected into form field components.
-      provide: FormValidationContextDirective
-    }
-  ]
+  // Allow <form> tags to provide the validationContext to its children,
+  // or allow sticking [validationContextProvider] attribute on any element.
+  selector: "form , [validationContextProvider]",
+  providers: [FormValidationContext]
 })
-export class FormValidationContextDirective {
-  @Input() validationMessages: ValidationMessagesConfig = {};
-  constructor() {}
+export class FormValidationContextProvider {
+  @Input() validationContext: FormValidationContextConfig = {};
+
+  constructor(private _validationContext: FormValidationContext) {}
+
+  ngOnInit() {
+    // Configure the FormValidationContext instance created by this Provider
+    // with the given FormValidationContextConfig.
+    this._validationContext.validationContext = this.validationContext;
+    console.log(
+      "Form validation messages:",
+      Object.keys(this._validationContext.validationContext.validationMessages)
+    );
+  }
 }
 
-export default FormValidationContextDirective;
+export default FormValidationContextProvider;

@@ -1,6 +1,6 @@
 import { Component } from "@angular/core";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
-import ValidationMessagesConfig from "./types/ValidationMessagesConfig";
+import FormValidationContextConfig from "./types/FormValidationContextConfig";
 
 @Component({
   selector: "my-app",
@@ -28,10 +28,12 @@ export class AppComponent {
     over21: false
   };
 
-  validationMessages: ValidationMessagesConfig = {
-    required: () => "Required",
-    email: () => "Require a valid email address",
-    pattern: (error, control) => "Invalid pattern."
+  validationContext: FormValidationContextConfig = {
+    validationMessages: {
+      required: () => "Required",
+      email: () => "Require a valid email address",
+      pattern: (error, control) => "Invalid pattern."
+    }
   };
 
   resetForm() {

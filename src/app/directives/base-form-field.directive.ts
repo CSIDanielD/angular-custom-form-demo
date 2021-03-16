@@ -1,8 +1,8 @@
-import { Directive, Host, Input } from "@angular/core";
+import { Directive } from "@angular/core";
 import { ControlValueAccessor, FormControl, NgControl } from "@angular/forms";
+import FormValidationContext from "../classes/FormValidationContext";
 import FormControlAccessor from "../interfaces/FormControlAccessor";
 import ValidationMessagesConfig from "../types/ValidationMessagesConfig";
-import FormValidationContextDirective from "./form-validation-context.directive";
 
 /**
  * Serves as the base class for all our custom form field components.
@@ -14,17 +14,16 @@ import FormValidationContextDirective from "./form-validation-context.directive"
 @Directive({
   selector: "[appBaseFormField]"
 })
-export class BaseFormFieldDirective implements ControlValueAccessor {
+export class BaseFormFieldDirective
+  implements ControlValueAccessor, FormControlAccessor {
+  valid
   disabled: boolean = false;
   value: any = "";
 
   public onChange(value: any) {}
   public onTouched() {}
 
-  constructor(
-    private ngControl?: NgControl,
-    private validationContext?: FormValidationContextDirective
-  ) {
+  constructor(private ngControl?: NgControl, private _validationContext? : FormValidationContext) {
     if (ngControl) {
       ngControl.valueAccessor = this;
     }
@@ -33,6 +32,10 @@ export class BaseFormFieldDirective implements ControlValueAccessor {
   /** The injected NgControl cast to FormControl */
   get control() {
     return this.ngControl ? ((this.ngControl as unknown) as FormControl) : null;
+  }
+
+  get validationContext() {
+    return this._validationContext?.validationContext;
   }
 
   /** The current validation error messages in array form. */
