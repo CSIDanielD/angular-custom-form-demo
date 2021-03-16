@@ -31,9 +31,7 @@ export class AppComponent {
   validationMessages: ValidationMessagesConfig = {
     required: () => "Required",
     email: () => "Require a valid email address",
-    pattern: (error, control) => {
-      if (control.
-    }
+    pattern: (error, control) => "Invalid pattern."
   };
 
   resetForm() {
