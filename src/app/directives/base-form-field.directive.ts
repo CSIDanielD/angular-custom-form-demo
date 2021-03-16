@@ -1,5 +1,6 @@
 import { Directive, Input } from "@angular/core";
 import { ControlValueAccessor, FormControl, NgControl } from "@angular/forms";
+import ValidationMessagesConfig from "../types/ValidationMessagesConfig";
 
 /**
  * Serves as the base class for all our custom form field components.
@@ -12,18 +13,19 @@ import { ControlValueAccessor, FormControl, NgControl } from "@angular/forms";
   selector: "[appBaseFormField]"
 })
 export class BaseFormFieldDirective implements ControlValueAccessor {
-  @Input() validationMessages: { [validationKey: string]: string } = {};
+  @Input() validationMessages: ValidationMessagesConfig = {};
   disabled: boolean = false;
   value: any = "";
 
   public onChange(value: any) {}
   public onTouched() {}
 
+  /** The injected NgControl cast to FormControl */
   get control() {
     return this.ngControl ? ((this.ngControl as unknown) as FormControl) : null;
   }
 
-  /** Get the current validation error messages in array form. */
+  /** The current validation error messages in array form. */
   get errorMessages() {
     if (!this.ngControl || !this.ngControl.errors) return null;
 
@@ -32,14 +34,14 @@ export class BaseFormFieldDirective implements ControlValueAccessor {
       return null; // Return early if no custom validation messages were given.
 
     // Create a copy of the validationMessages object, but with lowercase keys.
-    // This should facilitate matching the ngControl errors with the defined
+    // This facilitates matching the ngControl errors with the defined
     // messages.
     const lowercaseKeys = validationMessageKeys.reduce(
       (keys, key) => {
         keys[key.toLocaleLowerCase()] = this.validationMessages[key];
         return keys;
       },
-      {} as { [validationKey: string]: string }
+      {} as ValidationMessagesConfig
     );
 
     return Object.keys(this.ngControl.errors).reduce(
