@@ -7,6 +7,7 @@ import { BaseFormFieldDirective } from "./directives/base-form-field.directive";
 import { CustomFormInputComponent } from "./components/custom-form-input/custom-form-input.component";
 import { CustomFormSelectComponent } from "./components/custom-form-select/custom-form-select.component";
 import FormValidationContextDirective from "./directives/form-validation-context.directive";
+import { CustomFormTextareaComponent } from './components/custom-form-textarea/custom-form-textarea.component';
 
 @NgModule({
   imports: [BrowserModule, FormsModule, ReactiveFormsModule],
@@ -15,7 +16,8 @@ import FormValidationContextDirective from "./directives/form-validation-context
     BaseFormFieldDirective,
     CustomFormInputComponent,
     CustomFormSelectComponent,
-    FormValidationContextDirective
+    FormValidationContextDirective,
+    CustomFormTextareaComponent
   ],
   bootstrap: [AppComponent]
 })

@@ -26,15 +26,19 @@ export class AppComponent {
     email: "",
     phone: "",
     food: "🍩",
+    notes: "",
     over21: false
   };
 
   validationContext: FormValidationContextConfig = {
     validationMessages: {
       required: () => "Required",
-      email: () => "Requires a valid email address",
+      email: () => "Requires a valid email address.",
       pattern: (error, control) =>
-        `Invalid pattern. Expected: ${error.requiredPattern}`
+        `Invalid pattern. Expected: ${error.requiredPattern}`,
+      minLength: error => `Must be a least ${error.requiredLength} characters.`,
+      maxLength: error =>
+        `Must be less than ${error.requiredLength} characters.`
     }
   };
 
@@ -87,6 +91,10 @@ export class AppComponent {
       food: [
         this.defaultFormValues.food,
         [Validators.pattern(new RegExp("🍎|🥑|🍕|🍣|🍩"))]
+      ],
+      notes: [
+        this.defaultFormValues.notes,
+        [Validators.required, Validators.minLength(5), Validators.maxLength(50)]
       ],
       over21: [this.defaultFormValues.over21]
     });

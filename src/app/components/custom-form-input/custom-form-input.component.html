@@ -6,11 +6,11 @@
     <input
       [id]="id"
       class="form-check-input"
-      [ngClass]="{'is-invalid': !control.pristine && control.invalid}"
+      [ngClass]="{'is-invalid': !control?.pristine && control?.invalid}"
       [type]="inputType"
       [name]="name"
-      [checked]="control.value"
-      [disabled]="control.disabled"
+      [checked]="control?.value"
+      [disabled]="control?.disabled"
       (input)="onChange(getHTMLCheckedValue($event))"
       (blur)="onTouched()"
     />
@@ -26,18 +26,18 @@
   <input
     [id]="id"
     class="form-control"
-    [ngClass]="{'is-invalid': !control.pristine && control.invalid}"
+    [ngClass]="{'is-invalid': !control?.pristine && control?.invalid}"
     [type]="inputType"
     [name]="name"
     [placeholder]="placeholder"
-    [value]="control.value"
-    [disabled]="control.disabled"
+    [value]="control?.value"
+    [disabled]="control?.disabled"
     (input)="onChange(getHTMLTextValue($event))"
     (blur)="onTouched()"
   />
 </ng-template>
 
-<div *ngIf="!control.pristine && control.invalid">
+<div *ngIf="!control?.pristine && control?.invalid">
   <small>
     {{ errorMessages && errorMessages.length > 0 ? errorMessages[0] : "Invalid"
     }}

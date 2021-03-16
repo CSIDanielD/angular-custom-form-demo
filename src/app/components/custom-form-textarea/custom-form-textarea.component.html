@@ -1,21 +1,17 @@
-<label [for]="id">{{label}}</label>
-<select
+<label [for]="id">{{ label }}</label>
+<textarea
   [id]="id"
   class="form-control"
   [ngClass]="{'is-invalid': !control?.pristine && control?.invalid}"
+  [name]="name"
+  [placeholder]="placeholder"
+  [rows]="rows"
+  [cols]="cols"
   [value]="control?.value"
-  [disabled]="disabled"
-  (input)="onChange(getHTMLSelectValue($event))"
->
-  <option
-    *ngFor="let opt of options"
-    [value]="opt.id"
-    [selected]="opt.id === control?.value"
-  >
-    {{opt.name}}
-  </option>
-</select>
-
+  [disabled]="control?.disabled"
+  (input)="onChange(getHTMLTextValue($event))"
+  (blur)="onTouched()"
+></textarea>
 <div *ngIf="!control?.pristine && control?.invalid">
   <small>
     {{ errorMessages && errorMessages.length > 0 ? errorMessages[0] : "Invalid"
