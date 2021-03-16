@@ -26,6 +26,8 @@ export class CustomFormInputComponent extends BaseFormFieldDirective {
     // so we mark the dependency as optional.
     @Optional()
     ngControl: NgControl,
+
+        @Optional()
     validationContext: FormValidationContext
   ) {
     super(ngControl, validationContext);
