@@ -1,5 +1,6 @@
 import { Component } from "@angular/core";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
+import CustomFormSelectOption from "./types/components/customFormSelectOption";
 import FormValidationContextConfig from "./types/FormValidationContextConfig";
 
 @Component({
@@ -11,7 +12,7 @@ export class AppComponent {
   formGroup = new FormGroup({});
 
   // Define the list of food options to populate the CustomFormSelectComponent
-  foodOptions = [
+  foodOptions: CustomFormSelectOption[] = [
     { id: "🍎", name: "🍎" },
     { id: "🥑", name: "🥑" },
     { id: "🍕", name: "🍕" },

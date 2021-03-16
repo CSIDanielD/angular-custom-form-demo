@@ -111,3 +111,5 @@ export class BaseFormFieldDirective
     this.onTouched = fn;
   }
 }
+
+export default BaseFormFieldDirective;

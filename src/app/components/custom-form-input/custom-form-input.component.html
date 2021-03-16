@@ -1,6 +1,8 @@
 <!-- Option input template -->
 <ng-template [ngIf]="inputType === 'checkbox' || inputType === 'radio'">
-  <div class="form-check">
+  <div
+    [ngClass]="{'form-check-inline': inlineOption, 'form-check': !inlineOption}"
+  >
     <input
       [id]="id"
       class="form-check-input"

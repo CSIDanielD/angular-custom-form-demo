@@ -17,6 +17,7 @@ export class CustomFormInputComponent extends BaseFormFieldDirective {
   @Input() placeholder: string = "";
   @Input() inputType: "text" | "email" | "password" | "checkbox" | "radio" =
     "text";
+  @Input() inlineOption = false;
 
   constructor(
     // Retrieve the dependency only from the local injector,
@@ -26,8 +27,7 @@ export class CustomFormInputComponent extends BaseFormFieldDirective {
     // so we mark the dependency as optional.
     @Optional()
     ngControl: NgControl,
-
-        @Optional()
+    @Optional()
     validationContext: FormValidationContext
   ) {
     super(ngControl, validationContext);
