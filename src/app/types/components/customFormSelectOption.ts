@@ -1,5 +1,5 @@
 export interface CustomFormSelectOption {
-  id: string;
+  id: string | number;
   name: string;
 }
 

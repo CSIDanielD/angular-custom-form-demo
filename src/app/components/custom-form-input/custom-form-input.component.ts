@@ -14,6 +14,7 @@ import { BaseFormFieldDirective } from "../../directives/base-form-field.directi
 export class CustomFormInputComponent extends BaseFormFieldDirective {
   @Input() id: string | number = "";
   @Input() label: string = "";
+  @Input() name: string = "";
   @Input() placeholder: string = "";
   @Input() inputType: "text" | "email" | "password" | "checkbox" | "radio" =
     "text";
