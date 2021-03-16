@@ -29,13 +29,21 @@
           formControlName="fullname"
         >
         </app-custom-form-input>
+
+        <!-- 
+          Adding a element-specific validationContextProvider attribute and [validationContext] will 
+          override any parent validation contexts. 
+        -->
         <app-custom-form-input
+          validationContextProvider
+          [validationContext]="phoneValidationContext"
           id="phone"
           label="Phone number"
           placeholder="123-456-7891"
           formControlName="phone"
         >
         </app-custom-form-input>
+
         <app-custom-form-select
           id="food"
           label="Food"

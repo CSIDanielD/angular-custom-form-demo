@@ -64,8 +64,7 @@ export class BaseFormFieldDirective
 
     return Object.keys(this.ngControl.errors).reduce(
       (messages, currentErrorKey) => {
-        const error = this.ngControl[currentErrorKey];
-
+        const error = this.ngControl.errors[currentErrorKey];
         if (lowercaseKeys[currentErrorKey.toLocaleLowerCase()]) {
           // Get the actual error string by calling the provided function
           const errorStr = lowercaseKeys[currentErrorKey.toLocaleLowerCase()](

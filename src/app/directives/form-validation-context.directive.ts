@@ -5,7 +5,7 @@ import FormValidationContextConfig from "../types/FormValidationContextConfig";
 @Directive({
   // Allow <form> tags to provide the validationContext to its children,
   // or allow sticking [validationContextProvider] attribute on any element.
-  selector: "form , [validationContextProvider]",
+  selector: "form, [validationContextProvider]",
   providers: [FormValidationContext]
 })
 export class FormValidationContextProvider {

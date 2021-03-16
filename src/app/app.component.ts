@@ -31,8 +31,16 @@ export class AppComponent {
   validationContext: FormValidationContextConfig = {
     validationMessages: {
       required: () => "Required",
-      email: () => "Require a valid email address",
-      pattern: (error, control) => "Invalid pattern."
+      email: () => "Requires a valid email address",
+      pattern: (error, control) =>
+        `Invalid pattern. Expected: ${error.requiredPattern}`
+    }
+  };
+
+  // Used to demonstrate the ability to override the form-level validation context
+  phoneValidationContext: FormValidationContextConfig = {
+    validationMessages: {
+      pattern: () => "Requires a valid phone number."
     }
   };
 
