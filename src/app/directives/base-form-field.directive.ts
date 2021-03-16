@@ -16,7 +16,6 @@ import ValidationMessagesConfig from "../types/ValidationMessagesConfig";
 })
 export class BaseFormFieldDirective
   implements ControlValueAccessor, FormControlAccessor {
-  valid
   disabled: boolean = false;
   value: any = "";
 

@@ -2,14 +2,15 @@
 <ng-template [ngIf]="inputType === 'checkbox' || inputType === 'radio'">
   <div class="form-check">
     <input
-          [id]="id"
-          class="form-check-input"
-          [ngClass]="{'is-invalid': !control.pristine && control.invalid}"
-          [type]="inputType"
-          [checked]="control.value"
-          [disabled]="control.disabled"
-          (input)="onChange(getHTMLCheckedValue($event))"
-          (blur)="onTouched()"/>
+      [id]="id"
+      class="form-check-input"
+      [ngClass]="{'is-invalid': !control.pristine && control.invalid}"
+      [type]="inputType"
+      [checked]="control.value"
+      [disabled]="control.disabled"
+      (input)="onChange(getHTMLCheckedValue($event))"
+      (blur)="onTouched()"
+    />
     <label class="form-check-label" [for]="id">
       {{label}}
     </label>
@@ -20,29 +21,21 @@
 <ng-template [ngIf]="inputType !== 'checkbox' && inputType !== 'radio'">
   <label [for]="id">{{ label }}</label>
   <input
-        [id]="id"
-        class="form-control"
-        [ngClass]="{'is-invalid': !control.pristine && control.invalid}"
-        [type]="inputType"
-        [placeholder]="placeholder"
-        [value]="control.value"
-        [disabled]="control.disabled"
-        (input)="onChange(getHTMLTextValue($event))"
-        (blur)="onTouched()" />
+    [id]="id"
+    class="form-control"
+    [ngClass]="{'is-invalid': !control.pristine && control.invalid}"
+    [type]="inputType"
+    [placeholder]="placeholder"
+    [value]="control.value"
+    [disabled]="control.disabled"
+    (input)="onChange(getHTMLTextValue($event))"
+    (blur)="onTouched()"
+  />
 </ng-template>
 
 <div *ngIf="!control.pristine && control.invalid">
   <small>
-    {{
-      errorMessages && errorMessages.length > 0 ? 
-      errorMessages[0] : 
-      "Invalid"
+    {{ errorMessages && errorMessages.length > 0 ? errorMessages[0] : "Invalid"
     }}
   </small>
-  <!-- <small>
-    {{
-    control?.hasError("required") ? "Required" : 
-    "Invalid " + inputType
-    }}
-  </small> -->
 </div>

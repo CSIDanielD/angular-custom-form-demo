@@ -17,10 +17,6 @@ export class FormValidationContextProvider {
     // Configure the FormValidationContext instance created by this Provider
     // with the given FormValidationContextConfig.
     this._validationContext.validationContext = this.validationContext;
-    console.log(
-      "Form validation messages:",
-      Object.keys(this._validationContext.validationContext.validationMessages)
-    );
   }
 }
 
